@@ -1,6 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    load-balancer.hetzner.cloud/ipv6-disabled: "true"
+    load-balancer.hetzner.cloud/location: hel1
+    load-balancer.hetzner.cloud/name: lbtest
   name: locust-inventory-master-service
   labels:
     name: locust-inventory-master-service
