@@ -1,37 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: locust-inventory-worker
+  name: locust-worker
   labels:
-    name: locust-inventory-worker
+    app: locust-worker
 spec:
-  replicas: 1
+  replicas: 1 # Adjust this as needed
   selector:
     matchLabels:
-      app: locust-inventory-worker
+      app: locust-worker
   template:
     metadata:
       labels:
-        app: locust-inventory-worker
-        name: locust-inventory-worker
-        role: worker
+        app: locust-worker
     spec:
       containers:
-        - name: locust-inventory-worker
-          image: ojoxdan/locust-ptest # Locust version
-          resources:
-            limits:
-              cpu: 2
-            requests:
-              cpu: 2
+        - name: locust-worker
+          image: ojoxdan/locust-ptest # Ensure this is your correct Docker image
           env:
-            - name: LOCUST_MODE_WORKER
-              value: "true"
             - name: LOCUST_MASTER_NODE_HOST
-              value: locust-inventory-master # Master Deployment Name
-            - name: LOCUST_LOCUSTFILE
-              value: /locust-tasks/locustfile.py
-              # value: load_tests/inventory/locustfile.py
+              value: locust-master-service # This should be the name of your master service
             - name: LOCUST_HOST
-              value: "http://5.161.161.219:9000"
-              # value: "http://0.0.0.0:8009"
+              value: "http://5.161.161.219:9000" # Update this to your target URL

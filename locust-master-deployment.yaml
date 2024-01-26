@@ -1,52 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: locust-inventory-master
+  name: locust-master
   labels:
-    name: locust-inventory-master
+    app: locust-master
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: locust-inventory-master
+      app: locust-master
   template:
     metadata:
       labels:
-        app: locust-inventory-master
-        name: locust-inventory-master
-        role: master
+        app: locust-master
     spec:
-      tolerations:
-        - key: "node-role.kubernetes.io/master"
-          operator: "Exists"
-          effect: "NoSchedule"
       containers:
-        - name: locust-inventory-master
-          image: ojoxdan/locust-ptest # Put you Docker Image Here
-          # image: custom-locust:1.0.1 # Put you Docker Image Here
-          resources:
-            limits:
-              cpu: 2
-            requests:
-              cpu: 2
+        - name: locust-master
+          image: ojoxdan/locust-ptest
+          ports:
+            - containerPort: 8089
+            - containerPort: 5557
+            - containerPort: 5558
           env:
-            - name: LOCUST_MODE_MASTER
-              value: "true"
-            - name: LOCUST_EXPECT_WORKERS
-              value: "1"
-            - name: LOCUST_LOCUSTFILE
-              value: /locust-tasks/locustfile.py
-              # value: load_tests/inventory/locustfile.py
             - name: LOCUST_HOST
               value: "http://5.161.161.219:9000"
-              # value: "http://0.0.0.0:8009"
-          ports:
-            - name: loc-master-web
-              containerPort: 8089
-              protocol: TCP
-            - name: loc-master-p1
-              containerPort: 5557
-              protocol: TCP
-            - name: loc-master-p2
-              containerPort: 5558
-              protocol: TCP

@@ -5,21 +5,21 @@ metadata:
     load-balancer.hetzner.cloud/ipv6-disabled: "true"
     load-balancer.hetzner.cloud/location: hel1
     load-balancer.hetzner.cloud/name: lbtest
-  name: locust-inventory-master-service
-  labels:
-    name: locust-inventory-master-service
+  name: locust-master-service
 spec:
   type: LoadBalancer
   selector:
-    name: locust-inventory-master
-    role: master
+    app: locust-master
   ports:
     - port: 8089
+      targetPort: 8089
       protocol: TCP
-      name: locust-inventory-master-web
+      name: web
     - port: 5557
+      targetPort: 5557
       protocol: TCP
-      name: locust-inventory-master-port-1
+      name: master-port-1
     - port: 5558
+      targetPort: 5558
       protocol: TCP
-      name: locust-inventory-master-port-2
+      name: master-port-2
