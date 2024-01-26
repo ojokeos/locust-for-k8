@@ -26,9 +26,9 @@ spec:
           # image: custom-locust:1.0.1 # Put you Docker Image Here
           resources:
             limits:
-              cpu: 1900
+              cpu: 2
             requests:
-              cpu: 900
+              cpu: 2
           env:
             - name: LOCUST_MODE_MASTER
               value: "true"
