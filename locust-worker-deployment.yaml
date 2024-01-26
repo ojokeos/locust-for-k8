@@ -17,6 +17,13 @@ spec:
       containers:
         - name: locust-worker
           image: ojoxdan/locust-ptest # Ensure this is your correct Docker image
+          resources:
+            requests:
+              cpu: 3 # Request 0.5 CPU cores
+              memory: "4Gi" # Request 256 MiB of memory
+            limits:
+              cpu: 4 # Limit to 1 CPU core
+              memory: "8Gi" # Limit to 512 MiB of memory
           env:
             - name: LOCUST_MASTER_NODE_HOST
               value: locust-master-service # This should be the name of your master service

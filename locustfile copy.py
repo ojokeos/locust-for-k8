@@ -1,9 +1,9 @@
 from wsgiref import headers
-from locust import between, task, FastHttpUser
+from locust import HttpUser, between, task
 import json
 
 
-class WebsiteUser(FastHttpUser):
+class WebsiteUser(HttpUser):
     wait_time = between(5, 15)
 # http://5.161.66.169/
 # http://5.161.161.219:9000
