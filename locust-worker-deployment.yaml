@@ -30,7 +30,7 @@ spec:
             - name: LOCUST_MASTER_NODE_HOST
               value: locust-inventory-master # Master Deployment Name
             - name: LOCUST_LOCUSTFILE
-              value: locustfile.py
+              value: /locust-tasks/locustfile.py
               # value: load_tests/inventory/locustfile.py
             - name: LOCUST_HOST
               value: "http://5.161.161.219:9000"
