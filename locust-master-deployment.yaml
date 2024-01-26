@@ -16,6 +16,10 @@ spec:
         name: locust-inventory-master
         role: master
     spec:
+      tolerations:
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
+          effect: "NoSchedule"
       containers:
         - name: locust-inventory-master
           image: ojoxdan/locust-ptest # Put you Docker Image Here
