@@ -35,9 +35,11 @@ spec:
             - name: LOCUST_EXPECT_WORKERS
               value: "1"
             - name: LOCUST_LOCUSTFILE
-              value: load_tests/inventory/locustfile.py
+              value: locustfile.py
+              # value: load_tests/inventory/locustfile.py
             - name: LOCUST_HOST
-              value: "http://0.0.0.0:8009"
+              value: "http://5.161.161.219:9000"
+              # value: "http://0.0.0.0:8009"
           ports:
             - name: loc-master-web
               containerPort: 8089
