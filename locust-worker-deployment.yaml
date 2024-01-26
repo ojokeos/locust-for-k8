@@ -21,9 +21,9 @@ spec:
           image: ojoxdan/locust-ptest # Locust version
           resources:
             limits:
-              cpu: 1900m
+              cpu: 2
             requests:
-              cpu: 900m
+              cpu: 2
           env:
             - name: LOCUST_MODE_WORKER
               value: "true"
