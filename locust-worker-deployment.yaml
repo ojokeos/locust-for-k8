@@ -28,4 +28,5 @@ spec:
             - name: LOCUST_MASTER_NODE_HOST
               value: locust-master-service # This should be the name of your master service
             - name: LOCUST_HOST
-              value: "http://5.161.161.219:9000" # Update this to your target URL
+              value: "http://google.com" # Update this to your target URL
+              # value: "http://5.161.161.219:9000" # Update this to your target URL

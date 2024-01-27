@@ -23,4 +23,5 @@ spec:
             - containerPort: 5558
           env:
             - name: LOCUST_HOST
-              value: "http://5.161.161.219:9000"
+              value: "http://google.com"
+              # value: "http://5.161.161.219:9000"
